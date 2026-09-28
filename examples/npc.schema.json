@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TinyNPC character definition",
+  "type": "object",
+  "required": ["id", "name", "role"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,64}$"},
+    "name": {"type": "string", "minLength": 1, "maxLength": 80},
+    "role": {"type": "string", "minLength": 1, "maxLength": 160},
+    "description": {"type": "string", "maxLength": 1000},
+    "known_facts": {"type": "array", "maxItems": 20, "items": {"type": "string", "minLength": 1, "maxLength": 240}},
+    "conversation_style": {"type": "array", "maxItems": 4, "items": {"type": "string", "minLength": 1, "maxLength": 200}},
+    "personality": {
+      "type": "object",
+      "propertyNames": {"enum": ["humor", "bravery", "friendliness", "patience", "aggressiveness", "honesty", "curiosity", "sociability"]},
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 100}
+    },
+    "style": {
+      "type": "object",
+      "propertyNames": {"enum": ["verbosity", "sarcasm", "swearing"]},
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 100}
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "location": "East gate square",
+  "entities": [
+    {"id": "player", "kind": "person", "description": "the player", "distance": 2, "direction": "ahead", "activity": "speaking to you"},
+    {"id": "bakery", "kind": "building", "description": "small stone bakery", "distance": 12, "direction": "left"},
+    {"id": "medina", "kind": "person", "name": "Medina", "description": "courier in a blue coat", "distance": 5, "direction": "right", "activity": "waiting beside a bench"}
+  ]
+}

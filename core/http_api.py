@@ -18,22 +18,25 @@ def respond(runtime,payload):
     if not isinstance(payload,dict):raise ValueError('Request must be a JSON object.')
     profile=payload.get('npc',{})
     if not isinstance(profile,dict):raise ValueError('npc must be an object.')
-    npc=NPCProfile(npc_id=short(profile.get('id','marcus')),name=short(profile.get('name','Marcus')),
-        role=short(profile.get('role','city guard')),personality=Personality(**profile.get('personality',{})),
-        speech=SpeechStyle(**profile.get('style',{})))
+    npc=NPCProfile.from_dict(profile)
     player=short(payload.get('player_id','local-player'))
-    entities=payload.get('visible_entities',[])
+    pov=payload.get('pov',{})
+    if not isinstance(pov,dict):raise ValueError('pov must be an object.')
+    entities=pov.get('entities',payload.get('visible_entities',[]))
     if not isinstance(entities,list) or len(entities)>32:raise ValueError('Use at most 32 visible entities.')
     objects=[]
     for e in entities:
         if not isinstance(e,dict):raise ValueError('Entity must be an object.')
         if not isinstance(e.get('visible',True),bool):raise ValueError('visible must be a boolean.')
         objects.append(PerceivedEntity(short(e['id']),short(e.get('kind','prop')),short(e['description'],180),
-            float(e.get('distance',0)),short(e.get('direction','ahead')),visible=e.get('visible',True)))
-    caption=payload.get('caption','')
+            float(e.get('distance',0)),short(e.get('direction','ahead')),known_name=short(e['name']) if e.get('name') else '',
+            activity=short(e['activity'],160) if e.get('activity') else '',visible=e.get('visible',True)))
+    caption=pov.get('caption',payload.get('caption',''))
     if not isinstance(caption,str) or len(caption)>180:raise ValueError('Caption must be at most 180 characters.')
-    view=PerceptionFrame(entities=tuple(objects),caption=caption)
-    result=runtime.talk_npc(npc.npc(),player,short(payload.get('text'),400),view)
+    location=pov.get('location','');focus=pov.get('focused_entity_id','')
+    if not isinstance(location,str) or len(location)>160 or not isinstance(focus,str) or len(focus)>100:raise ValueError('Invalid POV location or focus.')
+    view=PerceptionFrame(entities=tuple(objects),caption=caption,location=location,focused_entity_id=focus)
+    result=runtime.talk_profile(npc,player,short(payload.get('text'),400),view)
     return dict(speech=result.speech,state=result.state,timings=result.timings)
 
 def handler(runtime):

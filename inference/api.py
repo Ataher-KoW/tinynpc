@@ -15,6 +15,7 @@ class DialogueRequest:
     character_traits: tuple[str, ...] = ()
     reference: str = ""
     reference_status: str = "none"
+    character_description: str = ""
 
 
 class DialogueEngine(Protocol):

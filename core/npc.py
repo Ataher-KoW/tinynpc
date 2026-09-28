@@ -14,3 +14,4 @@ class NPC:
     speech: SpeechStyle = field(default_factory=SpeechStyle)
     state: NPCState = field(default_factory=NPCState)
     conversation_style: tuple[str, ...] = ()
+    description: str = ''

@@ -43,13 +43,36 @@ def download(url,path,size,digest):
     partial.replace(path)
     return path
 
+def install_model(manifest,directory):
+    directory=Path(directory);target=directory/manifest['filename']
+    if 'parts' not in manifest:return download(manifest['url'],target,manifest['bytes'],manifest['sha256'])
+    if target.exists():
+        if target.stat().st_size==manifest['bytes'] and sha256(target)==manifest['sha256']:return target
+        raise ValueError('Existing model does not match the manifest. Rename it before retrying.')
+    if sum(p['bytes'] for p in manifest['parts'])!=manifest['bytes']:raise ValueError('Part sizes do not match model size.')
+    parts=[]
+    for item in manifest['parts']:
+        if Path(item['filename']).name!=item['filename']:raise ValueError('Invalid part filename.')
+        parts.append(download(item['url'],directory/'parts'/item['filename'],item['bytes'],item['sha256']))
+    assembling=target.with_suffix(target.suffix+'.assembling')
+    import shutil
+    with assembling.open('wb') as output:
+        for part in parts:
+            with part.open('rb') as source:shutil.copyfileobj(source,output,8*1024*1024)
+    if assembling.stat().st_size!=manifest['bytes'] or sha256(assembling)!=manifest['sha256']:
+        raise ValueError('Assembled model checksum failed.')
+    assembling.replace(target)
+    # These are the exact verified download parts, not arbitrary user files.
+    for part in parts:part.unlink()
+    return target
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime',choices=['manual','windows-cuda','windows-cpu'],default='manual')
     args=parser.parse_args()
     if args.runtime!='manual' and platform.system()!='Windows':parser.error('Automatic native setup is Windows only. Use --runtime manual and see docs/integration.md.')
     manifest=json.loads((ROOT/'model-manifest.json').read_text())
-    download(manifest['url'],ROOT/'models'/manifest['filename'],manifest['bytes'],manifest['sha256'])
+    install_model(manifest,ROOT/'models')
     if args.runtime=='manual':
         print('Model ready. Set server_path in inference/config.json to your llama-server executable.');return
     metadata=json.loads((ROOT/'runtime-release.json').read_text())

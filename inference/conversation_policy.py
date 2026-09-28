@@ -49,6 +49,9 @@ def conversation_messages(request):
         f'In the facts, {request.npc_name} refers to you; the player is a different person. '
         f'KNOWN FACTS: {facts}\n'
         'Return only a JSON object with one string field: speech.')
+    if request.character_description:
+        system+='\nCHARACTER DESCRIPTION (developer-authored background, not the player): '+json.dumps(request.character_description,ensure_ascii=False)
+        system+='\nUse this background when relevant. Do not recite the whole description in response to a greeting.'
     if request.character_traits:
         system+='\nCHARACTER VOICE for this conversation:\n'+'\n'.join('- '+trait for trait in request.character_traits)
         system+='\nLet these traits shape the reply naturally. Do not announce your traits or repeat your interests when unrelated.'

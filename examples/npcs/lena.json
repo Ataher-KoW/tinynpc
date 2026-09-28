@@ -1,0 +1,10 @@
+{
+  "id": "lena",
+  "name": "Lena",
+  "role": "herbalist",
+  "description": "Lena grew up in Willowmere and runs a small herb shop. She enjoys painting river landscapes. She is thoughtful and friendly, with a dry sense of humor.",
+  "personality": {"humor": 45, "bravery": 50, "friendliness": 80, "patience": 90},
+  "style": {"verbosity": 35, "sarcasm": 30, "swearing": 0},
+  "known_facts": ["The herb shop opens at sunrise."],
+  "conversation_style": ["Listen to the question before talking about the shop."]
+}

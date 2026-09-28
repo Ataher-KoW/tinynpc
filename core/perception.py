@@ -22,6 +22,8 @@ class PerceivedEntity:
 
     def describe(self):
         label = self.known_name or self.description or self.kind
+        if self.known_name and self.description and self.description.casefold()!=self.known_name.casefold():
+            label=self.known_name+' ('+self.description+')'
         activity = f", {self.activity}" if self.activity else ""
         return f"{label[:90]}, {self.direction}, {self.distance:.0f} metres away{activity[:60]}"
 
@@ -68,10 +70,11 @@ class PerceptionFrame:
         target,_=self.resolve(query)
         visible.sort(key=lambda e: (e is not target,-len(words & set(e.describe().lower().split())), e.distance))
         result = [e.describe() for e in visible[:limit]]
+        if self.location:result.insert(0,'Current location: '+self.location[:160])
         if self.caption:
             result.append("Host-provided image caption: " + self.caption[:180])
         if self.image_path and not (visible or self.caption):
             raise ValueError("An image needs visible scene entities or a host caption; pixel understanding is not enabled.")
         if self.image_path and not Path(self.image_path).is_file():
             raise ValueError("The perception image does not exist.")
-        return tuple(result[:limit+1])
+        return tuple(result[:limit+2])

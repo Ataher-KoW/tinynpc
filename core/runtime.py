@@ -28,6 +28,18 @@ class NPCRuntime:
         with self._lock:
             self.memory.close()
 
+    def talk_profile(self,profile,player_id,text,perception=None,on_sentence=None):
+        """Apply a developer's JSON character definition, then run one dialogue turn."""
+        with self._lock:
+            prefix='profile fact '
+            current={f['key']:f for f in self.memory.facts(profile.npc_id,player_id) if f['key'].startswith(prefix)}
+            desired={prefix+str(i):fact for i,fact in enumerate(profile.known_facts)}
+            for key in current.keys()-desired.keys():self.memory.forget(profile.npc_id,player_id,key)
+            for key,value in desired.items():
+                if key not in current or current[key]['value']!=value or current[key]['source']!='host':
+                    self.memory.remember(profile.npc_id,player_id,key,value,importance=70)
+            return self.talk_npc(profile.npc(),player_id,text,perception,on_sentence)
+
     def talk_npc(self, npc, player_id, text, perception=None, on_sentence=None):
         from .state import NPCState
         from .state_engine import apply_interaction
@@ -40,7 +52,7 @@ class NPCRuntime:
             interaction = classify(text)
             apply_interaction(npc.state, npc.personality, interaction)
             try:
-                result = self.talk(npc.npc_id, player_id, npc.name, npc.role, text, mood_for(npc), perception,character_traits(npc),on_sentence)
+                result = self.talk(npc.npc_id, player_id, npc.name, npc.role, text, mood_for(npc), perception,character_traits(npc),on_sentence,npc.description)
             except Exception:
                 npc.state = previous
                 raise
@@ -49,7 +61,7 @@ class NPCRuntime:
                 self.memory.remember(npc.npc_id, player_id, 'last interaction', interaction.kind, 'interaction',ttl=86400)
             return TurnResult(result.speech,result.seconds,result.example_id,result.context,asdict(npc.state),result.timings)
 
-    def talk(self, npc_id, player_id, name, role, text, mood="calm", perception=None,traits=(),on_sentence=None):
+    def talk(self, npc_id, player_id, name, role, text, mood="calm", perception=None,traits=(),on_sentence=None,character_description=''):
         text = text.strip()
         if not text or len(text) > 400:
             raise ValueError("Use a message between 1 and 400 characters.")
@@ -61,7 +73,7 @@ class NPCRuntime:
             self.memory.learn_claims(npc_id, player_id, text)
             request = DialogueRequest(name, role, mood, text, observations,
                 self.memory.history(npc_id, player_id), self.memory.recall(npc_id, player_id, text),
-                tuple(traits),target.describe() if target else '',status)
+                tuple(traits),target.describe() if target else '',status,character_description)
             start = time.perf_counter()
             if on_sentence is not None and hasattr(self.engine, 'respond_stream'):
                 speech = self.engine.respond_stream(request, on_sentence)

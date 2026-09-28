@@ -15,15 +15,7 @@ class NPCSession:
 
     def reply(self,profile,text,player_id='local-player',perception=None):
         if self.closed:raise RuntimeError('Session is closed.')
-        prefix='profile fact '
-        with self.runtime._lock:
-            current={f['key']:f for f in self.memory.facts(profile.npc_id,player_id) if f['key'].startswith(prefix)}
-            desired={prefix+str(i):fact for i,fact in enumerate(profile.known_facts)}
-            for key in current.keys()-desired.keys():self.memory.forget(profile.npc_id,player_id,key)
-            for key,value in desired.items():
-                if key not in current or current[key]['value']!=value or current[key]['source']!='host':
-                    self.memory.remember(profile.npc_id,player_id,key,value,importance=70)
-            return self.runtime.talk_npc(profile.npc(),player_id,text,perception or PerceptionFrame())
+        return self.runtime.talk_profile(profile,player_id,text,perception or PerceptionFrame())
 
     def close(self):
         if not self.closed:self.closed=True;self.runtime.close()

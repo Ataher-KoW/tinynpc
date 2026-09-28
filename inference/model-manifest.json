@@ -5,7 +5,68 @@
   "bytes": 1282438944,
   "sha256": "803351c3e41a43a08452fc1cb444e33a9124179431fb267f4e30d73a75a02655",
   "filename": "tinynpc-student-q4_k_m.gguf",
-  "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf",
   "license": "Apache-2.0",
-  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "parts": [
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part01",
+      "bytes": 134217728,
+      "sha256": "f31e4cc31e8704045a4013268d4e1122a46631be745a37fcbf141e4d9034ba48",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part01"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part02",
+      "bytes": 134217728,
+      "sha256": "ddd4121cf5228b864e40b43b03071274a6c8daab7c298eff9804d1de3337232c",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part02"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part03",
+      "bytes": 134217728,
+      "sha256": "44fd354722a6fdc0382450b779e6f98d54a4134c13d47a395a0dca4ae65c1356",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part03"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part04",
+      "bytes": 134217728,
+      "sha256": "cd182ed3d270f6adc56893a7a3938e8f14a51dcd59985ba8f2b5762d8ffa4278",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part04"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part05",
+      "bytes": 134217728,
+      "sha256": "5dc7d0c9a86f7733a2421cea900096417ec26c14bc92cfea32d0ea8e5877dc52",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part05"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part06",
+      "bytes": 134217728,
+      "sha256": "ab40d5feba92a869959126590d08f9560196319f81cc363d4e234acf80216eba",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part06"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part07",
+      "bytes": 134217728,
+      "sha256": "984d98314b71db0ef97cff5503739a16e71affde0440541de44a23da11427e32",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part07"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part08",
+      "bytes": 134217728,
+      "sha256": "95ef50ad0f567760dc91fc61dd6b9c1cebbc05cfe3ba2d5f47883e81a70cf9fe",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part08"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part09",
+      "bytes": 134217728,
+      "sha256": "575d154602277d4934fdccc4908761b4ba0270a9dd6bd71963a935d61418c9e4",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part09"
+    },
+    {
+      "filename": "tinynpc-student-q4_k_m.gguf.part10",
+      "bytes": 74479392,
+      "sha256": "3b5625bb3e90d34594a3550f3b14ab0bd01922c116a869deb50bf05f04e9ef57",
+      "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf.part10"
+    }
+  ]
 }

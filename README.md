@@ -1,16 +1,21 @@
-# TinyNPC: an NPC-ready LLM for games with fast local responses
+# TinyNPC: fast local NPC dialogue with JSON characters and POV context
 
 I wanted NPCs I could actually talk to. Small enough to ship, quick enough to keep a conversation moving, and simple enough to drop into a game.
 
 TinyNPC is a **1.28 GB local dialogue model** with a lightweight integration for character personality, memory, and the things an NPC can see around it. On my **RTX 2060 6 GB**, the new model averaged **0.246 seconds per text reply** across 30 test turns. No cloud API or paid inference service is required.
 
+Define who an NPC is in JSON, send descriptions of what it can see, and add the player's message. The runtime combines those inputs into the model's context. One model can serve many different characters. **[Design your first NPC](docs/characters.md)** using the included character and POV files.
+
 **[Download the model](https://github.com/Ataher-KoW/tinynpc/releases/tag/v0.1.0)** | **[Game integration](docs/integration.md)** | **[Results and limits](docs/benchmarks.md)** | **[Model card](inference/MODEL_CARD.md)**
 
-![TinyNPC model size and response time comparisons](docs/images/overview.png)
+![Character facts and supplied POV quality checks](docs/images/characters.png)
+
+In the character-and-POV test, the student mentioned 11 of 12 expected facts. That is not an overall quality score: some correct answers also contain invented details. [Read the actual replies and tradeoffs](docs/quality.md).
 
 ## What you get
 
 - Short, in-character text replies from one shared local model.
+- Editable NPC JSON definitions for background, character description, known facts, and speaking style.
 - Personality controls such as humor, bravery, friendliness, and patience, from 0 to 100.
 - Separate conversation memory for each NPC and player.
 - Point-of-view context: visible entities, distance, direction, and an optional game-provided caption.
@@ -29,7 +34,7 @@ python -m inference.setup --runtime windows-cuda
 python -m examples.chat
 ```
 
-Setup downloads the model, verifies its checksum, and installs the pinned native runtime. The Python runtime code itself uses only the standard library. The **1.28 GB number is the model file**, not the full installation. The Windows CUDA runtime archives add about **646 MB of downloads** and need more space after extraction. Allow at least 4 GB of free disk space for installation.
+Setup downloads ten verified model parts, assembles one model file, verifies its checksum, and installs the pinned native runtime. The Python runtime code itself uses only the standard library. The **1.28 GB number is the model file**, not the full installation. The Windows CUDA runtime archives add about **646 MB of downloads** and need more space after extraction. Allow at least 6 GB of free disk space for installation.
 
 If a download is interrupted, run setup again. It resumes a partial download and verifies the complete file. Already have a compatible native runtime? Use `python -m inference.setup`, then set its path in `inference/config.json`.
 
@@ -50,18 +55,25 @@ Send JSON to `http://127.0.0.1:8765/chat`:
     "id": "marcus",
     "name": "Marcus",
     "role": "city guard",
+    "description": "Marcus grew up in Northbridge, enjoys baking bread, and speaks with gentle humor.",
+    "known_facts": ["The east gate closes at dusk."],
     "personality": {"humor": 87, "bravery": 79, "friendliness": 65}
   },
   "text": "What is that place on your left?",
-  "visible_entities": [
-    {"id": "bakery", "kind": "building", "description": "small stone bakery", "distance": 12, "direction": "left"}
-  ]
+  "pov": {
+    "location": "East gate square",
+    "entities": [
+      {"id": "bakery", "kind": "building", "description": "small stone bakery", "distance": 12, "direction": "left"}
+    ]
+  }
 }
 ```
 
 Read `speech` from the response and show it in your dialogue UI. Send requests asynchronously so your game keeps rendering. Use one bridge for all NPCs, rather than loading a separate model for every character. See [the full guide](docs/integration.md) for Python, Unity, Unreal, Godot, memory, and point-of-view setup.
 
 ## How fast is it?
+
+![Model size and measured latency](docs/images/overview.png)
 
 All four rows below were measured on the same RTX 2060. These are variants from this project, not a comparison against every NPC model out there. Smaller and lower latency are better.
 
@@ -78,11 +90,9 @@ The student has **49% less file size and 30% lower mean latency** than the origi
 
 ## And the dialogue quality?
 
-The smaller model is faster, but it is not a clean quality win. I added a separate review because zero basic flags missed some bad replies, especially made-up visual details.
+There are two separate comparisons: **normal conversations with a character definition and POV supplied**, and **robustness tests with scene information deliberately missing**. A missing-context failure is not a test of whether the model can read a supplied POV description.
 
-![Targeted dialogue quality comparison](docs/images/quality.png)
-
-These are small, targeted checks from the same saved conversations. Some use simple rules; others were reviewed by the Codex assistant, not human raters. See [the rubric, exact replies, and failures](docs/quality.md). I am publishing the tradeoff, not calling this perfect dialogue.
+See [the quality comparison, exact replies, and scoring limits](docs/quality.md). These are small local tests, not a human study or a claim of perfect dialogue. The speed chart above is the earlier timing run; the newer character tests use richer prompts and have their own recorded timings.
 
 ## What still needs work
 

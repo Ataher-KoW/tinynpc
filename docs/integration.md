@@ -1,5 +1,7 @@
 # Add TinyNPC to your game
 
+Start with [Design an NPC in JSON](characters.md) for the character description, scene context, and player-message flow. Ready-to-edit character files are in `examples/npcs/`; a sample POV is in `examples/pov/`.
+
 ## Architecture
 
 Your game sends character information, the player's text, and a small set of visible scene facts. The runtime retrieves that NPC's memory, builds the dialogue context, and returns speech as plain text. One local model serves requests in sequence. This release does not implement a multiplayer scheduler.
@@ -22,12 +24,14 @@ runtime = NPCRuntime(create_dialogue_service(), MemoryStore("data/my-game.db"))
 npc = NPCProfile(
     npc_id="marcus", name="Marcus", role="city guard",
     personality=Personality(humor=87, bravery=79, friendliness=65),
-).npc()
+    description="Marcus grew up in Northbridge and enjoys baking bread.",
+    known_facts=("The east gate closes at dusk.",),
+)
 view = PerceptionFrame(entities=(
     PerceivedEntity("bakery", "building", "small stone bakery", 12, "left"),
 ))
 try:
-    result = runtime.talk_npc(npc, "player-1", "What is that building?", view)
+    result = runtime.talk_profile(npc, "player-1", "What is that building?", view)
     print(result.speech)
 finally:
     runtime.close()
