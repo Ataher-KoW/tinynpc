@@ -1,0 +1,19 @@
+{
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_gib": 6,
+  "ram_gib": 16,
+  "os": "Windows",
+  "native_runtime": "llama.cpp b11060, commit 426090367",
+  "gpu_layers": 99,
+  "threads": 4,
+  "flash_attention": true,
+  "benchmark_context": 2048,
+  "extra_probe_context": 8192,
+  "seed": 42,
+  "max_output_tokens": 180,
+  "timing_scope": "Complete text turn including memory/context. Excludes model startup, speech and rendering.",
+  "turns_per_model": 30,
+  "repetitions": 1,
+  "source": "Local overnight run completed 2026-09-27. Original result rows retained.",
+  "limitation": "No other hardware or unrelated model families were benchmarked."
+}

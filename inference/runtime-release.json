@@ -1,0 +1,204 @@
+{
+  "tag": "b11060",
+  "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b11060",
+  "assets": [
+    {
+      "name": "cudart-llama-b11060-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-b11060-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "bytes": 594373580,
+      "digest": "sha256:b55cfd65833f4f45fa2187d4d8542772ceef6e5332138669739b3e008150233d"
+    },
+    {
+      "name": "cudart-llama-b11060-bin-ubuntu-cuda-13.3-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-b11060-bin-ubuntu-cuda-13.3-arm64.tar.gz",
+      "bytes": 518393016,
+      "digest": "sha256:49e64bdc2c8a8df4fe5ca1ca5ac08468e44c103e9b3bd167f7732eaa22d29b5d"
+    },
+    {
+      "name": "cudart-llama-b11060-bin-ubuntu-cuda-13.3-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-b11060-bin-ubuntu-cuda-13.3-x64.tar.gz",
+      "bytes": 410248819,
+      "digest": "sha256:d99dc320940dcb2a8e24ea08f0c98eb2b1eafe8600c30a9cbaa9fcdf1b55e4c5"
+    },
+    {
+      "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "bytes": 391443627,
+      "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+    },
+    {
+      "name": "cudart-llama-bin-win-cuda-13.4-arm64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-bin-win-cuda-13.4-arm64.zip",
+      "bytes": 153262407,
+      "digest": "sha256:642dcde8805b3e3165ca710a5443b3b4044b27d96bd3ee3132473988c9bcb774"
+    },
+    {
+      "name": "cudart-llama-bin-win-cuda-13.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/cudart-llama-bin-win-cuda-13.4-x64.zip",
+      "bytes": 423535356,
+      "digest": "sha256:738f8c251ac22b70c3ae6f83a10cf222725df0395246a2cf58f32bdb85fbe668"
+    },
+    {
+      "name": "llama-b11060-bin-android-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-android-arm64.tar.gz",
+      "bytes": 72260785,
+      "digest": "sha256:6b862c7e7ada569c20a411668451224596aa33ed77659acf4edcd739d4024ee0"
+    },
+    {
+      "name": "llama-b11060-bin-macos-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-macos-arm64.tar.gz",
+      "bytes": 11178367,
+      "digest": "sha256:f38d330eb9e097316cbda7838d99d5414ab4195f8f96b303949ec80547168592"
+    },
+    {
+      "name": "llama-b11060-bin-macos-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-macos-x64.tar.gz",
+      "bytes": 11216404,
+      "digest": "sha256:c3799ae5495069f6d54be6dd0835a487b28f66868a83a52f542aa65a7e711dc9"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-arm64.tar.gz",
+      "bytes": 13498203,
+      "digest": "sha256:3c268f1a25f2c658eaf0c8b086bcfde9d1f40221802e87ae6dc2ae849b72daf1"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "bytes": 168841771,
+      "digest": "sha256:cf454c2dac2931f18fc4146ea68c8bf3a9e86c7daa6985e93013e7a8025513f7"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-cuda-13.3-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-cuda-13.3-arm64.tar.gz",
+      "bytes": 145086312,
+      "digest": "sha256:8780a4612d3d769138f486c2293e679329134bd22d85b0eb8e959c61f9f2f120"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-cuda-13.3-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-cuda-13.3-x64.tar.gz",
+      "bytes": 149142138,
+      "digest": "sha256:d5c776fc159c8692521ac2df3586593df73e492a1d4b05dc94bca152f7f8347a"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-openvino-2026.4-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-openvino-2026.4-x64.tar.gz",
+      "bytes": 109040133,
+      "digest": "sha256:b9fe27e6d125536f8d060f81790eb88305f3e2b13ac853a85f9e73935c480a64"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-rocm-10.0-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-rocm-10.0-x64.tar.gz",
+      "bytes": 239121604,
+      "digest": "sha256:09428c4345a3431c9d85ab4959f6db8079fc5b9d07536eba49c99772aea0e42b"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-s390x.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-s390x.tar.gz",
+      "bytes": 15293878,
+      "digest": "sha256:d310bc593031bd6ce744afb58d278e86cf7d35a0e28d996dec0aa6c36872ca36"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-sycl-fp16-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-sycl-fp16-x64.tar.gz",
+      "bytes": 54785950,
+      "digest": "sha256:194fa0d66b35135a8666c09db7fe2998c773ce91c261bdb96a1a17a67b79270f"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-sycl-fp32-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-sycl-fp32-x64.tar.gz",
+      "bytes": 54561083,
+      "digest": "sha256:04a986e25098983a90397426630569e15febd8bc4344aebcec82bcd3bc3feac0"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-vulkan-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-vulkan-arm64.tar.gz",
+      "bytes": 24336208,
+      "digest": "sha256:a2d9aa237023edf0a62eb78d29c3d731b9715b3a09df35a56f09feaf224926ca"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-vulkan-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-vulkan-x64.tar.gz",
+      "bytes": 30384959,
+      "digest": "sha256:b7e4619e115b77cd8c2d1280c19eee1e3c38d2dbb559713646525ae2cdb47ca2"
+    },
+    {
+      "name": "llama-b11060-bin-ubuntu-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-ubuntu-x64.tar.gz",
+      "bytes": 16877346,
+      "digest": "sha256:0ef19058e60555e9a318baa9d8490335505e6207dafdb936fb07f9623368ec46"
+    },
+    {
+      "name": "llama-b11060-bin-win-cpu-arm64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-cpu-arm64.zip",
+      "bytes": 12013604,
+      "digest": "sha256:dc07b5313dfdee239a7e06a58b766b1811da9102f9f46e59865c28e02d242e2a"
+    },
+    {
+      "name": "llama-b11060-bin-win-cpu-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-cpu-x64.zip",
+      "bytes": 18463147,
+      "digest": "sha256:d0393b195149c4042349f8103cd6c7519546c71de4288a8a149de4c55366354b"
+    },
+    {
+      "name": "llama-b11060-bin-win-cuda-12.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-cuda-12.4-x64.zip",
+      "bytes": 254222353,
+      "digest": "sha256:baad8a4e4f083165aac446c3ad0d32d438980e6ece5a3a0a69cfb45b7b262916"
+    },
+    {
+      "name": "llama-b11060-bin-win-cuda-13.4-arm64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-cuda-13.4-arm64.zip",
+      "bytes": 143005061,
+      "digest": "sha256:40a22808b414e5884b2bbd4276658353431cfead9fc482a58b8cdcaed7b5b9e8"
+    },
+    {
+      "name": "llama-b11060-bin-win-cuda-13.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-cuda-13.4-x64.zip",
+      "bytes": 150128709,
+      "digest": "sha256:6cbe9a622c0158b4fa3bbb5aa0c2fdb6ec667e757afc352f30c0a6c597fbfec0"
+    },
+    {
+      "name": "llama-b11060-bin-win-opencl-adreno-arm64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-opencl-adreno-arm64.zip",
+      "bytes": 12821835,
+      "digest": "sha256:c7ddaf6415a018ed3b3b8692d61554c6b41404d4cb731c6114b40f0e712fa434"
+    },
+    {
+      "name": "llama-b11060-bin-win-openvino-2026.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-openvino-2026.4-x64.zip",
+      "bytes": 88280255,
+      "digest": "sha256:55a5954ea4a7a63521a4bd86e1464ce3eb4360dd297f4afec03f06c169904ee8"
+    },
+    {
+      "name": "llama-b11060-bin-win-rocm-10.0-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-rocm-10.0-x64.zip",
+      "bytes": 256117794,
+      "digest": "sha256:113039c51ce1cb44c4516a0562b036a2e7430ff199ce07bdffedeb4f220f6702"
+    },
+    {
+      "name": "llama-b11060-bin-win-sycl-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-sycl-x64.zip",
+      "bytes": 119826768,
+      "digest": "sha256:0c69a4faadf421f60915d5e9bdbc78db9d2220f183c392ef599968ed750797d9"
+    },
+    {
+      "name": "llama-b11060-bin-win-vulkan-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-bin-win-vulkan-x64.zip",
+      "bytes": 31848012,
+      "digest": "sha256:a5e9dee3b0c6c688080b5489efcf9c4162c354b1e8a76288f5391e99c91d6d40"
+    },
+    {
+      "name": "llama-b11060-ui.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-ui.tar.gz",
+      "bytes": 3083001,
+      "digest": "sha256:35a03b53992eda7601288f0349e9163aaa71889645d152a854e3cb41c0727ee4"
+    },
+    {
+      "name": "llama-b11060-xcframework.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11060/llama-b11060-xcframework.zip",
+      "bytes": 58166015,
+      "digest": "sha256:99a82db6d61ea2a233dc17f4e6ea33f6a0b50382918ed72e671549602d570e23"
+    }
+  ]
+}

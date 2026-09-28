@@ -1,0 +1,77 @@
+"""Engine-neutral observations. Hosts determine visibility; hidden knowledge stays out."""
+from dataclasses import dataclass
+from pathlib import Path
+import math
+import re
+
+
+@dataclass(frozen=True)
+class PerceivedEntity:
+    entity_id: str
+    kind: str
+    description: str
+    distance: float
+    direction: str = "ahead"
+    known_name: str = ""
+    activity: str = ""
+    visible: bool = True
+
+    def __post_init__(self):
+        if not self.entity_id.strip():raise ValueError('Entity ID is required.')
+        if not math.isfinite(self.distance) or self.distance<0:raise ValueError('Entity distance must be finite and nonnegative.')
+
+    def describe(self):
+        label = self.known_name or self.description or self.kind
+        activity = f", {self.activity}" if self.activity else ""
+        return f"{label[:90]}, {self.direction}, {self.distance:.0f} metres away{activity[:60]}"
+
+
+@dataclass(frozen=True)
+class PerceptionFrame:
+    entities: tuple[PerceivedEntity, ...] = ()
+    location: str = ""
+    image_path: str = ""
+    # A host-provided caption is provenance-labelled; pixels are not interpreted here.
+    caption: str = ""
+    focused_entity_id: str = ""
+
+    def __post_init__(self):
+        ids=[e.entity_id for e in self.entities]
+        if len(set(ids))!=len(ids):raise ValueError('Entity IDs must be unique.')
+
+    def resolve(self,query,previous_id=""):
+        """Return a visible target, ambiguity, or unknown; never select hidden entities."""
+        visible=[e for e in self.entities if e.visible]
+        if self.focused_entity_id:
+            focused=next((e for e in visible if e.entity_id==self.focused_entity_id),None)
+            if focused:return focused,'explicit'
+        words=set(re.findall(r'[a-z]+',query.lower()))
+        stop={'what','where','which','that','this','there','your','like','with','have','does','about','person','building'}
+        nouns=words-stop
+        matches=[e for e in visible if nouns & set(re.findall(r'[a-z]+',(e.known_name+' '+e.description).lower()))-{'a','an','the','of','to','in','on','is','it','you'}]
+        if len(matches)==1:return matches[0],'named'
+        if len(matches)>1:return None,'ambiguous'
+        for kind in ('building','person','prop'):
+            if kind in words:
+                matches=[e for e in visible if e.kind==kind]
+                if len(matches)==1:return matches[0],'unique'
+                if len(matches)>1:return None,'ambiguous'
+        if words & {'it','that','this'}:
+            previous=next((e for e in visible if e.entity_id==previous_id),None)
+            if previous:return previous,'previous'
+            return None,'unknown'
+        return None,'none'
+
+    def observations(self, query="", limit=4):
+        words = set(query.lower().split()) - {"the", "a", "you", "is", "it", "that"}
+        visible = [e for e in self.entities if e.visible and e.distance >= 0]
+        target,_=self.resolve(query)
+        visible.sort(key=lambda e: (e is not target,-len(words & set(e.describe().lower().split())), e.distance))
+        result = [e.describe() for e in visible[:limit]]
+        if self.caption:
+            result.append("Host-provided image caption: " + self.caption[:180])
+        if self.image_path and not (visible or self.caption):
+            raise ValueError("An image needs visible scene entities or a host caption; pixel understanding is not enabled.")
+        if self.image_path and not Path(self.image_path).is_file():
+            raise ValueError("The perception image does not exist.")
+        return tuple(result[:limit+1])

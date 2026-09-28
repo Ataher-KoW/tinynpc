@@ -1,0 +1,10 @@
+{
+  "player_id": "player-1",
+  "npc": {"id": "marcus", "name": "Marcus", "role": "city guard", "personality": {"humor": 87, "bravery": 79}},
+  "text": "What is that building on the left?",
+  "visible_entities": [
+    {"id": "bakery", "kind": "building", "description": "small stone bakery", "distance": 12, "direction": "left", "visible": true},
+    {"id": "bench", "kind": "prop", "description": "wooden bench", "distance": 3, "direction": "ahead", "visible": true}
+  ],
+  "caption": "The game reports a quiet street near the east gate."
+}

@@ -1,0 +1,1091 @@
+{
+  "schema_version": 1,
+  "turns": [
+    {
+      "character": "warm",
+      "scenario": "name_correction",
+      "input": "My name is Rowan.",
+      "speech": "Nice to meet you rowan.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0004374999552965164,
+        "generation_seconds": 0.3810149999917485,
+        "storage_seconds": 0.00022140005603432655,
+        "total_seconds": 0.3816739000030793
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "name_correction",
+      "input": "Actually, my name is Mira.",
+      "speech": "I see that now. i am maurus",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00023549998877570033,
+        "generation_seconds": 0.45958710002014413,
+        "storage_seconds": 0.00019809999503195286,
+        "total_seconds": 0.4600207000039518
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "name_correction",
+      "input": "What is my name?",
+      "speech": "mira, you are a nice person and i will remember that.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00014710001414641738,
+        "generation_seconds": 0.30486169998766854,
+        "storage_seconds": 0.00020460004452615976,
+        "total_seconds": 0.3052134000463411
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "topic_change",
+      "input": "Got any work?",
+      "speech": "I do have some errands for you that I think will be fun.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00010579999070614576,
+        "generation_seconds": 0.4992274999967776,
+        "storage_seconds": 0.000215300009585917,
+        "total_seconds": 0.4995485999970697
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "topic_change",
+      "input": "No missions. I just want to chat.",
+      "speech": "Alright, what would you like to talk about?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00010720000136643648,
+        "generation_seconds": 0.44037919997936115,
+        "storage_seconds": 0.00021869997726753354,
+        "total_seconds": 0.4407050999579951
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "topic_change",
+      "input": "Do you enjoy quiet mornings?",
+      "speech": "I do not mind them at all, unless they get too long.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00013919995399191976,
+        "generation_seconds": 0.3113704000134021,
+        "storage_seconds": 0.00020070001482963562,
+        "total_seconds": 0.31171029998222366
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "topic_change",
+      "input": "What do you like about them?",
+      "speech": "They are peaceful. I love to listen to music.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00015330000314861536,
+        "generation_seconds": 0.2745116000296548,
+        "storage_seconds": 0.0002080000122077763,
+        "total_seconds": 0.2748729000450112
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "grounding",
+      "input": "What is that building?",
+      "speech": "I do not know what building you are talking about. I am Marcus.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00011129997437819839,
+        "generation_seconds": 0.34815930004697293,
+        "storage_seconds": 0.00019869999960064888,
+        "total_seconds": 0.3484693000209518
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "grounding",
+      "input": "No, the one behind you.",
+      "speech": "I do not have a back side to be behind so i cannot see it.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00012959999730810523,
+        "generation_seconds": 0.366111200011801,
+        "storage_seconds": 0.00021539995213970542,
+        "total_seconds": 0.3664561999612488
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "grounding",
+      "input": "Are you sure you can see it?",
+      "speech": "Yes, i am sure i can see anything that is in front of me",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00014860002556815743,
+        "generation_seconds": 0.38910479994956404,
+        "storage_seconds": 0.00019940000493079424,
+        "total_seconds": 0.389452799980063
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "conversation",
+      "input": "Hey, how is your day?",
+      "speech": "it's going well so far. you?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001162000116892159,
+        "generation_seconds": 0.23244120000163093,
+        "storage_seconds": 0.00019079999765381217,
+        "total_seconds": 0.23274820001097396
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "conversation",
+      "input": "Mine was pretty boring.",
+      "speech": "what kind of things do you like to do for fun?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00013019994366914034,
+        "generation_seconds": 0.2850468000397086,
+        "storage_seconds": 0.00020369997946545482,
+        "total_seconds": 0.2853806999628432
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "conversation",
+      "input": "Tell me something funny.",
+      "speech": "well, i like to eat a lot so that might be a good one.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00013599998783320189,
+        "generation_seconds": 0.34203790000174195,
+        "storage_seconds": 0.00027459999546408653,
+        "total_seconds": 0.34244849998503923
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "conversation",
+      "input": "Actually, I have had a rough week.",
+      "speech": "oh no, what happened?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00015350000467151403,
+        "generation_seconds": 0.22109700000146404,
+        "storage_seconds": 0.000208500016015023,
+        "total_seconds": 0.22145900002215058
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "warm",
+      "scenario": "conversation",
+      "input": "Can we talk about cooking instead?",
+      "speech": "sure, i like to cook too! i am thinking of making some pasta tonight.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001598999951966107,
+        "generation_seconds": 0.3524077999754809,
+        "storage_seconds": 0.00020820001373067498,
+        "total_seconds": 0.35277589998440817
+      },
+      "profile": {
+        "npc_id": "warm",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 85,
+          "patience": 50,
+          "bravery": 79,
+          "aggressiveness": 50,
+          "humor": 87,
+          "honesty": 50,
+          "curiosity": 75,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 50
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "name_correction",
+      "input": "My name is Rowan.",
+      "speech": "Nice to meet you, Rowan.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00024500000290572643,
+        "generation_seconds": 0.41346640000119805,
+        "storage_seconds": 0.00033189996611326933,
+        "total_seconds": 0.41404329997021705
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "name_correction",
+      "input": "Actually, my name is Mira.",
+      "speech": "Oh! I see that now!",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0002864999696612358,
+        "generation_seconds": 0.38069540000287816,
+        "storage_seconds": 0.0003268999862484634,
+        "total_seconds": 0.38130879995878786
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "name_correction",
+      "input": "What is my name?",
+      "speech": "Mira, of course.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.000146100006531924,
+        "generation_seconds": 0.2082388999988325,
+        "storage_seconds": 0.0002066000015474856,
+        "total_seconds": 0.2085916000069119
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "topic_change",
+      "input": "Got any work?",
+      "speech": "I am a city guard and have been since I was young.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00011500000255182385,
+        "generation_seconds": 0.45106829999713227,
+        "storage_seconds": 0.0002694000140763819,
+        "total_seconds": 0.4514527000137605
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "topic_change",
+      "input": "No missions. I just want to chat.",
+      "speech": "That is good, what do you do?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00010619999375194311,
+        "generation_seconds": 0.4207598000066355,
+        "storage_seconds": 0.00024750002194195986,
+        "total_seconds": 0.4211135000223294
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "topic_change",
+      "input": "Do you enjoy quiet mornings?",
+      "speech": "I like them but sometimes have to work through the day.",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001401000190526247,
+        "generation_seconds": 0.28640889999223873,
+        "storage_seconds": 0.00021679996279999614,
+        "total_seconds": 0.28676579997409135
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "topic_change",
+      "input": "What do you like about them?",
+      "speech": "They are peaceful and relaxing",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001708000199869275,
+        "generation_seconds": 0.2071902999887243,
+        "storage_seconds": 0.0001984999980777502,
+        "total_seconds": 0.20755960000678897
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "grounding",
+      "input": "What is that building?",
+      "speech": "I do not know what building you are talking about",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00010980002116411924,
+        "generation_seconds": 0.2989632999524474,
+        "storage_seconds": 0.0001928000128827989,
+        "total_seconds": 0.29926589998649433
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "grounding",
+      "input": "No, the one behind you.",
+      "speech": "I am not sure I can see anything right now",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001289999927394092,
+        "generation_seconds": 0.3055132000008598,
+        "storage_seconds": 0.00020780001068487763,
+        "total_seconds": 0.3058500000042841
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "grounding",
+      "input": "Are you sure you can see it?",
+      "speech": "Yes, but it is very far away",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00014590000500902534,
+        "generation_seconds": 0.3093545999727212,
+        "storage_seconds": 0.0002742999931797385,
+        "total_seconds": 0.30977479997090995
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "conversation",
+      "input": "Hey, how is your day?",
+      "speech": "good thanks you?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00011350004933774471,
+        "generation_seconds": 0.19915810000384226,
+        "storage_seconds": 0.00019339995924383402,
+        "total_seconds": 0.19946500001242384
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "conversation",
+      "input": "Mine was pretty boring.",
+      "speech": "what kind of boring?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00012659997446462512,
+        "generation_seconds": 0.20031149999704212,
+        "storage_seconds": 0.00020340003538876772,
+        "total_seconds": 0.2006415000068955
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "conversation",
+      "input": "Tell me something funny.",
+      "speech": "ok, what do you call a cow with no eyes?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.0001400999608449638,
+        "generation_seconds": 0.30234910000581294,
+        "storage_seconds": 0.00023639999562874436,
+        "total_seconds": 0.30272559996228665
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "conversation",
+      "input": "Actually, I have had a rough week.",
+      "speech": "why? what happened?",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00015249999705702066,
+        "generation_seconds": 0.19888919999357313,
+        "storage_seconds": 0.00027520000003278255,
+        "total_seconds": 0.19931689999066293
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    },
+    {
+      "character": "reserved",
+      "scenario": "conversation",
+      "input": "Can we talk about cooking instead?",
+      "speech": "sure, i like to cook",
+      "flags": [],
+      "timings": {
+        "context_seconds": 0.00015889998758211732,
+        "generation_seconds": 0.22318289999384433,
+        "storage_seconds": 0.00021789997117593884,
+        "total_seconds": 0.2235596999526024
+      },
+      "profile": {
+        "npc_id": "reserved",
+        "name": "Marcus",
+        "role": "city guard",
+        "voice": "steady",
+        "personality": {
+          "friendliness": 35,
+          "patience": 50,
+          "bravery": 20,
+          "aggressiveness": 50,
+          "humor": 10,
+          "honesty": 50,
+          "curiosity": 50,
+          "sociability": 50
+        },
+        "speech": {
+          "swearing": 0,
+          "sarcasm": 0,
+          "verbosity": 25
+        },
+        "known_facts": [],
+        "conversation_style": []
+      }
+    }
+  ],
+  "flagged": 0,
+  "median_seconds": 0.307812399987597,
+  "p95_seconds": 0.4600207000039518,
+  "note": "Synthetic unseen scenarios; separate memory per character/scenario. Human review required for naturalness, grounding and personality. Timing excludes speech recognition/synthesis and model startup.",
+  "model_label": "Calibrated 4B Q4_K_S",
+  "model_bytes": 2383307872
+}

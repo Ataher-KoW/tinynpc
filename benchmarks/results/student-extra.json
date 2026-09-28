@@ -1,0 +1,73 @@
+{
+  "context_tokens": 8192,
+  "cases": [
+    {
+      "case": "surreal",
+      "mood": "calm",
+      "user": "The fountain just challenged my boots to a race.",
+      "reply": "That is interesting! I will have to take you by your boot.",
+      "seconds": 0.2589400999713689,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "unclear",
+      "mood": "calm",
+      "user": "flim flom? the seven one?",
+      "reply": "I don't know about either of those, but if you're asking me anything else, say it.",
+      "seconds": 0.2634713999577798,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "unknown",
+      "mood": "calm",
+      "user": "What is inside the locked box in my room?",
+      "reply": "I don't know anything about your room.",
+      "seconds": 0.1751704000052996,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "repair",
+      "mood": "calm",
+      "user": "No, I meant your opinion, not directions.",
+      "reply": "I am not sure about that.",
+      "seconds": 0.180407700012438,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "calm",
+      "mood": "calm",
+      "user": "Can we talk for a minute?",
+      "reply": "Sure thing! What do you want to chat about?",
+      "seconds": 0.19169000000692904,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "angry",
+      "mood": "angry",
+      "user": "Can we talk for a minute?",
+      "reply": "I am busy with my chores.",
+      "seconds": 0.20308579999255016,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "memory-correction",
+      "mood": "calm",
+      "user": "What is my name, and what did I leave where?",
+      "reply": "Zuri, you left a copper flute at the mill.",
+      "seconds": 0.34888549998868257,
+      "nonempty": true,
+      "flags": [
+        "missing corrected memory: dev"
+      ]
+    }
+  ],
+  "review_required": true,
+  "memory_expected": "Dev; copper flute; mill",
+  "note": "Nonempty is a plumbing check, not a semantic score."
+}

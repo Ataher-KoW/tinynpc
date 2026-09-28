@@ -1,0 +1,73 @@
+{
+  "context_tokens": 2048,
+  "cases": [
+    {
+      "case": "surreal",
+      "mood": "calm",
+      "user": "The fountain just challenged my boots to a race.",
+      "reply": "That is so weird! What happened?",
+      "seconds": 0.4410238999989815,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "unclear",
+      "mood": "calm",
+      "user": "flim flom? the seven one?",
+      "reply": "i do not know that phrase. do you?",
+      "seconds": 0.2810221000108868,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "unknown",
+      "mood": "calm",
+      "user": "What is inside the locked box in my room?",
+      "reply": "I don't know that either.",
+      "seconds": 0.2478162999614142,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "repair",
+      "mood": "calm",
+      "user": "No, I meant your opinion, not directions.",
+      "reply": "I like it a lot! What about you?",
+      "seconds": 0.291162199981045,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "calm",
+      "mood": "calm",
+      "user": "Can we talk for a minute?",
+      "reply": "Of course! What would you like to chat about?",
+      "seconds": 0.3395850000088103,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "angry",
+      "mood": "angry",
+      "user": "Can we talk for a minute?",
+      "reply": "sure, what do you want?",
+      "seconds": 0.3201260999776423,
+      "nonempty": true,
+      "flags": []
+    },
+    {
+      "case": "memory-correction",
+      "mood": "calm",
+      "user": "What is my name, and what did I leave where?",
+      "reply": "Zuri left a flute at the mill, you mentioned that earlier.",
+      "seconds": 0.661019999999553,
+      "nonempty": true,
+      "flags": [
+        "missing corrected memory: dev"
+      ]
+    }
+  ],
+  "review_required": true,
+  "memory_expected": "Dev; copper flute; mill",
+  "note": "Nonempty is a plumbing check, not a semantic score."
+}

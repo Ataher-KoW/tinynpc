@@ -1,0 +1,11 @@
+{
+  "name": "TinyNPC student",
+  "base": "Qwen/Qwen3-1.7B",
+  "quantization": "Q4_K_M",
+  "bytes": 1282438944,
+  "sha256": "803351c3e41a43a08452fc1cb444e33a9124179431fb267f4e30d73a75a02655",
+  "filename": "tinynpc-student-q4_k_m.gguf",
+  "url": "https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/tinynpc-student-q4_k_m.gguf",
+  "license": "Apache-2.0",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+}

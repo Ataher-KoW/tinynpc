@@ -1,0 +1,8 @@
+{
+  "server_path": "runtime/bin/llama-server.exe",
+  "model_path": "models/tinynpc-student-q4_k_m.gguf",
+  "context_tokens": 8192,
+  "gpu_layers": 99,
+  "threads": 4,
+  "flash_attention": "on"
+}
