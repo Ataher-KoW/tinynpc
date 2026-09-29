@@ -1,0 +1,20 @@
+{
+  "label": "student",
+  "benchmark": "IFEval",
+  "examples": 541,
+  "truncated": 94,
+  "metrics": {
+    "strict": {
+      "prompt_accuracy": 65.61922365988909,
+      "instruction_accuracy": 74.34052757793765,
+      "prompts": 541,
+      "instructions": 834
+    },
+    "loose": {
+      "prompt_accuracy": 68.76155268022181,
+      "instruction_accuracy": 77.33812949640287,
+      "prompts": 541,
+      "instructions": 834
+    }
+  }
+}

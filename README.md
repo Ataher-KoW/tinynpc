@@ -8,9 +8,11 @@ Define who an NPC is in JSON, send descriptions of what it can see, and add the 
 
 **[Download the model](https://github.com/Ataher-KoW/tinynpc/releases/tag/v0.1.0)** | **[Game integration](docs/integration.md)** | **[Results and limits](docs/benchmarks.md)** | **[Model card](inference/MODEL_CARD.md)**
 
-![Character facts and supplied POV quality checks](docs/images/characters.png)
+![Official IFEval instruction-following scores](docs/images/ifeval.png)
 
-In the character-and-POV test, the student mentioned 11 of 12 expected facts. That is not an overall quality score: some correct answers also contain invented details. [Read the actual replies and tradeoffs](docs/quality.md).
+This comparison uses the full **IFEval** benchmark and its official scoring code. It measures instruction following, not how human an NPC sounds. [Scores, settings, and raw results](docs/standard-benchmarks.md). The [separate NPC integration checks](docs/quality.md) show character descriptions, supplied POV, memory, and examples of invented details.
+
+The original larger model scored higher on all four IFEval metrics. The student trades some instruction-following ability for its smaller size and lower measured dialogue latency.
 
 ## What you get
 

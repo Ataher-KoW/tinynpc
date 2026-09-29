@@ -1,4 +1,6 @@
-# Dialogue quality with characters and POV
+# NPC integration checks with characters and POV
+
+For recognized benchmark scores, see [the full IFEval comparison](standard-benchmarks.md). The tests below are custom integration checks, not a standardized leaderboard metric.
 
 I want the comparison to answer a practical question: does the NPC use the character I wrote and the scene I sent? Speed alone cannot answer that.
 
@@ -43,7 +45,7 @@ Read the full inputs, histories, replies, and timings: [original](../benchmarks/
 
 ## Separate test: what happens when no scene is supplied?
 
-The old **0/6** measures unsupported visual claims when the test supplies **no scene facts**. It is not a POV input score, and there was no 0/12 POV capability test. That failure remains below because a game may sometimes send incomplete context.
+The old **0/6** measures unsupported visual claims when the test supplies **no scene facts**. It should be read as missing-scene grounding, not a POV input score. That failure remains below because a game may sometimes send incomplete context.
 
 # Missing-scene stress test
 

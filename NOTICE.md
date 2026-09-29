@@ -9,3 +9,5 @@ Human dialogue source: Saizheng Zhang, Emily Dinan, Jack Urbanek, Arthur Szlam, 
 Native inference uses llama.cpp under its upstream MIT license. Setup downloads official release assets separately and preserves license files found in the archives. See https://github.com/ggml-org/llama.cpp and https://github.com/ggml-org/llama.cpp/blob/master/LICENSE.
 
 Benchmark conversations in this repository are synthetic local evaluation material. They do not contain the developer's private in-game conversation history. Chart code uses matplotlib as a development dependency; matplotlib is not needed to run dialogue.
+
+IFEval: Jeffrey Zhou and colleagues, Instruction-Following Evaluation for Large Language Models (2023), Google Research. Official scorer and evaluation prompts are Apache-2.0. Downloaded source retains its notices. Published evaluation records reproduce benchmark prompts for auditability; see https://github.com/google-research/google-research/tree/master/instruction_following_eval. The Apache-2.0 license text is included in inference/LICENSE-MODEL.

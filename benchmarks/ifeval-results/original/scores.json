@@ -1,0 +1,21 @@
+{
+  "label": "original",
+  "benchmark": "IFEval",
+  "examples": 541,
+  "truncated": 75,
+  "output_parse_failures": 3,
+  "metrics": {
+    "strict": {
+      "prompt_accuracy": 80.59149722735674,
+      "instruction_accuracy": 86.69064748201438,
+      "prompts": 541,
+      "instructions": 834
+    },
+    "loose": {
+      "prompt_accuracy": 83.54898336414048,
+      "instruction_accuracy": 88.60911270983213,
+      "prompts": 541,
+      "instructions": 834
+    }
+  }
+}
