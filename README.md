@@ -1,6 +1,6 @@
 # TinyNPC v1.0: fast local NPC dialogue for games
 
-## [▶ Watch the demo: baseline vs v1.0 (48 seconds)](https://github.com/Ataher-KoW/tinynpc/releases/download/v1.0/tinynpc-baseline-v1.0-demo.mp4)
+## [▶ Watch the demo: baseline vs v1.0 (1 min 45 sec)](https://github.com/Ataher-KoW/tinynpc/releases/download/v1.0/tinynpc-baseline-v1.0-demo.mp4)
 
 I wanted NPCs I could actually talk to. Small enough to ship, quick enough to keep a conversation moving, and simple enough to drop into a game.
 
