@@ -1,3 +1,5 @@
+> Historical model card for v0.1.0. Its training and measurements do not describe v1.0. Original assets: https://github.com/Ataher-KoW/tinynpc/releases/tag/v0.1.0
+
 # TinyNPC student model
 
 ## Purpose
@@ -10,8 +12,8 @@ A small local text model adapted for short NPC dialogue. The surrounding runtime
 - Fine-tuning: single-epoch QLoRA, rank 8, alpha 16, dropout 0.05, learning rate 0.00005, accumulation 16, batch size 1, all-linear target modules.
 - Runtime export: merged adapter, independently quantized as Q4_K_M in GGUF format.
 - Thinking mode disabled. Output is constrained to a JSON object with one `speech` string, then returned as plain text to the game.
-- Download: 1,282,438,944 bytes. SHA-256 and exact release URL are in [model-manifest.json](model-manifest.json).
-- License: Apache-2.0. See [LICENSE-MODEL](LICENSE-MODEL). This is a modified and quantized derivative, not an official Qwen release.
+- Download: 1,282,438,944 bytes. SHA-256 and exact release URL are in [the original release manifest](https://github.com/Ataher-KoW/tinynpc/releases/download/v0.1.0/model-manifest.json).
+- License: Apache-2.0. See [LICENSE-MODEL](../inference/LICENSE-MODEL). This is a modified and quantized derivative, not an official Qwen release.
 
 ## Training
 
