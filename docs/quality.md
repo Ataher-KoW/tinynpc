@@ -1,3 +1,5 @@
+> Historical results: this page evaluates earlier weights, not the v1.0 preference fine-tune. See [v1.0 statistics](v1.0.md).
+
 # NPC integration checks with characters and POV
 
 For recognized benchmark scores, see [the full IFEval comparison](standard-benchmarks.md). The tests below are custom integration checks, not a standardized leaderboard metric.

@@ -14,7 +14,7 @@ def short(value,limit=100):
     if not isinstance(value,str) or not value.strip() or len(value)>limit:raise ValueError('Invalid or oversized text field.')
     return value
 
-def respond(runtime,payload):
+def respond(runtime,payload,on_sentence=None):
     if not isinstance(payload,dict):raise ValueError('Request must be a JSON object.')
     profile=payload.get('npc',{})
     if not isinstance(profile,dict):raise ValueError('npc must be an object.')
@@ -36,7 +36,9 @@ def respond(runtime,payload):
     location=pov.get('location','');focus=pov.get('focused_entity_id','')
     if not isinstance(location,str) or len(location)>160 or not isinstance(focus,str) or len(focus)>100:raise ValueError('Invalid POV location or focus.')
     view=PerceptionFrame(entities=tuple(objects),caption=caption,location=location,focused_entity_id=focus)
-    result=runtime.talk_profile(npc,player,short(payload.get('text'),400),view)
+    text=short(payload.get('text'),400)
+    if 'character_context' in payload:runtime.memory.update_character_context(npc.npc_id,player,payload['character_context'])
+    result=runtime.talk_profile(npc,player,text,view,on_sentence)
     return dict(speech=result.speech,state=result.state,timings=result.timings)
 
 def handler(runtime):

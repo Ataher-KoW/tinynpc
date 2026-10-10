@@ -1,0 +1,82 @@
+{
+  "model_sha256": "14d8551632c99773056ebbe326c015ae3d8ef6c8613a9965838ffd7ac21b1797",
+  "model_bytes": 1282438944,
+  "hardware": "RTX 2060 6 GB",
+  "stress": {
+    "smoke": false,
+    "models": {
+      "baseline": {
+        "turns": 320,
+        "failures": 0,
+        "checked_facts": 24,
+        "fact_pass_rate": 1,
+        "first_sentence_count": 320,
+        "first_sentence_p50": 0.3236668999888934,
+        "first_sentence_p95": 0.4545036000199616,
+        "short_complete_p95": 0.3797289000067394,
+        "complete_p95": 0.4643975999788381,
+        "under_one_second_fraction": 1,
+        "repeated_long_reply_fraction": 0.007326007326007326
+      },
+      "candidate": {
+        "turns": 320,
+        "failures": 0,
+        "checked_facts": 24,
+        "fact_pass_rate": 0.7916666666666666,
+        "first_sentence_count": 320,
+        "first_sentence_p50": 0.3624755000055302,
+        "first_sentence_p95": 0.5695806999865454,
+        "short_complete_p95": 0.5873806999879889,
+        "complete_p95": 0.6699926999863237,
+        "under_one_second_fraction": 1,
+        "repeated_long_reply_fraction": 0
+      }
+    },
+    "limitations": "Scripted, repeated prompts; three narrow literal fact checks per conversation, not semantic accuracy. Review corrections that mention both names manually. Personality differences require human review. Latency excludes loading and one warmup; repeated passes are correlated.",
+    "gate": {
+      "eligible": false,
+      "reasons": [
+        "Lower explicit corrected-name/current-view check score",
+        "Latency regression: short_complete_p95"
+      ],
+      "limits_seconds": {
+        "first_sentence_p95": 0.5954043200239539,
+        "short_complete_p95": 0.5056746800080874
+      },
+      "rule": "No factual-check regression or extra failures; p95 first sentence and short replies within baseline * 1.20 + 0.05 seconds. One second is a reported target, not a guarantee."
+    }
+  },
+  "conversation": {
+    "smoke": false,
+    "measure": "Whole scripted conversation preference; not human realism accuracy.",
+    "ai_preference": {
+      "score": 0.75,
+      "count": 100,
+      "wins": 51,
+      "ties": 48,
+      "losses": 1
+    },
+    "human_preference": null,
+    "family_bootstrap_95_interval": [
+      0.6935483870967742,
+      0.8133333333333334
+    ]
+  },
+  "conversation_models": {
+    "baseline": {
+      "conversations": 100,
+      "failures": 1,
+      "mean_seconds": 0.3834561985976122,
+      "first_sentence_seconds": 0.37231436472867646,
+      "mean_words": 8.502004008016032
+    },
+    "candidate": {
+      "conversations": 100,
+      "failures": 0,
+      "mean_seconds": 0.49422895520029125,
+      "first_sentence_seconds": 0.42548704310008906,
+      "mean_words": 15.252
+    }
+  },
+  "selection": "Owner selected preference model after in-game review; automatic gates failed."
+}

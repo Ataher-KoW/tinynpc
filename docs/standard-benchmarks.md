@@ -1,3 +1,5 @@
+> Historical results: this page evaluates earlier weights, not the v1.0 preference fine-tune. See [v1.0 statistics](v1.0.md).
+
 # Recognized benchmark scores
 
 The small character/POV checks are integration tests. They are not MMLU, GPQA, or a recognized dialogue benchmark. I keep them separate from standard model evaluations.

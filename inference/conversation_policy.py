@@ -44,7 +44,7 @@ def conversation_messages(request):
         'Use current memory values over older conversation history when a name or fact was corrected. '
         'When the player changes the subject or declines a task, leave the task alone, even if earlier replies discussed it. '
         'If speech is unclear, ask a short clarification about what they said. '
-        'Prefer one concise natural sentence; use a second when the question needs it. No narration, speaker labels or stage directions. '
+        'Match the detail to the moment: greetings can be tiny, ordinary replies can develop a thought, and explanations or stories may need several sentences. Finish the useful thought without padding. No fixed sentence count. No narration, speaker labels or stage directions. '
         f'You are {request.npc_name}, a {request.npc_role}. Mood: {request.mood}. '
         f'In the facts, {request.npc_name} refers to you; the player is a different person. '
         f'KNOWN FACTS: {facts}\n'
@@ -52,6 +52,13 @@ def conversation_messages(request):
     if request.character_description:
         system+='\nCHARACTER DESCRIPTION (developer-authored background, not the player): '+json.dumps(request.character_description,ensure_ascii=False)
         system+='\nUse this background when relevant. Do not recite the whole description in response to a greeting.'
+    if request.character_principles:
+        system+='\nCHARACTER PRINCIPLES: '+json.dumps(request.character_principles,ensure_ascii=False)
+        system+='\nExpress these through choices and tone, not slogans. Disagree when appropriate, and change your mind when new evidence warrants it. Humor can give way to sincerity.'
+    if request.character_context:
+        system+='\nCURRENT CHARACTER STATE: '+json.dumps(request.character_context,ensure_ascii=False)
+        system+='\nThese are host-supplied concerns and relationship context. Let relevant details affect the conversation, but do not repeatedly pitch a goal or claim an intended action already happened.'
+    system+='\nContribute when there is something relevant to add; do not end every turn with a question. On a misunderstanding, repair the specific mistake, listen to the clarification, and use it in the next answer. Permission to imagine does not turn a story into a real memory.'
     if request.character_traits:
         system+='\nCHARACTER VOICE for this conversation:\n'+'\n'.join('- '+trait for trait in request.character_traits)
         system+='\nLet these traits shape the reply naturally. Do not announce your traits or repeat your interests when unrelated.'
@@ -78,17 +85,25 @@ def conversation_messages(request):
             {'role':'assistant','content':json.dumps({'speech':reply})}])
     scene='; '.join(request.observations)
     if request.reference:scene+='; The referenced object is: '+request.reference
-    elif request.reference_status in ('unknown','ambiguous'):
-        scene+='; If an object is being referenced, its identity is unclear.'
+    elif request.reference_status=='ambiguous':
+        scene+='; MULTIPLE MATCHES: ask which visible object the player means. Do not select one without evidence.'
+    elif request.reference_status=='missing':
+        scene+='; NO VISIBLE MATCH for the requested object or direction. Say you cannot identify it from here. Other visible objects do not establish what is there.'
+    elif request.reference_status=='unknown':
+        scene+='; UNRESOLVED REFERENCE: ask what object the player means. Do not invent one.'
     # Put context in the system message, not in the player's mouth. Keep the
     # player's own words last so they remain the conversational focus.
     if scene:messages[0]['content']+='\nVISIBLE SURROUNDINGS (mention only if relevant): '+scene
     else:messages[0]['content']+='\nNo visible surroundings were supplied. Do not claim to see a building, person or object; ask what the player means when needed.'
+    player_name=None
     for memory in request.memories:
         name=re.match(r'player name: (.*?) \((?:host|player_claim)\)$',memory)
         if name:
-            messages[0]['content']+='\nCURRENT PLAYER NAME: '+name[1]+'. Use this exact name, not an older name in history. Do not invent a document or object as the source.'
+            player_name=name[1]
     if not request.observations and not request.reference and re.search(r'\b(?:building|pointing|behind you|can you see|you can see)\b',request.player_text,re.I):
         messages[0]['content']+='\nFor this question you have no visual evidence. Do not identify or claim ownership of an object. Ask which object they mean, or say you cannot see it.'
+    messages[0]['content']+='\nCURRENT SPEAKERS: '+json.dumps({'npc_you':request.npc_name,'player_talking_to_you':player_name or 'name not supplied'},ensure_ascii=False)
+    messages[0]['content']+='\nIn the PLAYER message, "I", "me" and "my" refer to the player; "you" and "your" refer to the NPC. Keep their names separate. Current speaker facts override mistaken earlier replies. If asked for an unknown name, ask for it.'
+    messages[0]['content']+='\nA creative request needs actual creative content: make the joke, imagined line or opinion. Acknowledging the request or saying you do not know is not an answer to an explicit hypothetical. Keep invented play separate from real world claims.'
     messages.append({'role':'user','content':request.player_text})
     return messages

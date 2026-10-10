@@ -52,7 +52,7 @@ class NPCRuntime:
             interaction = classify(text)
             apply_interaction(npc.state, npc.personality, interaction)
             try:
-                result = self.talk(npc.npc_id, player_id, npc.name, npc.role, text, mood_for(npc), perception,character_traits(npc),on_sentence,npc.description)
+                result = self.talk(npc.npc_id, player_id, npc.name, npc.role, text, mood_for(npc), perception,character_traits(npc),on_sentence,npc.description,npc.principles)
             except Exception:
                 npc.state = previous
                 raise
@@ -61,7 +61,7 @@ class NPCRuntime:
                 self.memory.remember(npc.npc_id, player_id, 'last interaction', interaction.kind, 'interaction',ttl=86400)
             return TurnResult(result.speech,result.seconds,result.example_id,result.context,asdict(npc.state),result.timings)
 
-    def talk(self, npc_id, player_id, name, role, text, mood="calm", perception=None,traits=(),on_sentence=None,character_description=''):
+    def talk(self, npc_id, player_id, name, role, text, mood="calm", perception=None,traits=(),on_sentence=None,character_description='',principles=()):
         text = text.strip()
         if not text or len(text) > 400:
             raise ValueError("Use a message between 1 and 400 characters.")
@@ -73,10 +73,15 @@ class NPCRuntime:
             self.memory.learn_claims(npc_id, player_id, text)
             request = DialogueRequest(name, role, mood, text, observations,
                 self.memory.history(npc_id, player_id), self.memory.recall(npc_id, player_id, text),
-                tuple(traits),target.describe() if target else '',status,character_description)
+                tuple(traits),target.describe() if target else '',status,character_description,tuple(principles),self.memory.character_context(npc_id,player_id))
             start = time.perf_counter()
+            first_sentence=None
+            def streamed(sentence):
+                nonlocal first_sentence
+                if first_sentence is None:first_sentence=time.perf_counter()-start
+                if on_sentence is not None:on_sentence(sentence)
             if on_sentence is not None and hasattr(self.engine, 'respond_stream'):
-                speech = self.engine.respond_stream(request, on_sentence)
+                speech = self.engine.respond_stream(request, streamed)
             else:
                 speech = self.engine.respond(request)
                 if on_sentence is not None: on_sentence(speech)
@@ -88,4 +93,5 @@ class NPCRuntime:
             done=time.perf_counter()
             return TurnResult(speech, seconds, ident,record,timings={
                 'context_seconds':start-started,'generation_seconds':seconds,
-                'storage_seconds':done-start-seconds,'total_seconds':done-started})
+                'storage_seconds':done-start-seconds,'total_seconds':done-started,
+                'first_sentence_seconds':first_sentence})

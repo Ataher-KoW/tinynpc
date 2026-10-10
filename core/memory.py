@@ -31,6 +31,9 @@ class MemoryStore:
             CREATE INDEX IF NOT EXISTS turn_owner ON turns(npc,player,id);
             CREATE TABLE IF NOT EXISTS relationships (
                 npc TEXT, player TEXT, state TEXT, PRIMARY KEY(npc,player));
+            CREATE TABLE IF NOT EXISTS character_context (
+                npc TEXT, player TEXT, field TEXT, value TEXT, updated REAL,
+                PRIMARY KEY(npc,player,field));
         ''')
         columns={row['name'] for row in self.db.execute('PRAGMA table_info(facts)')}
         with self.db:
@@ -64,6 +67,29 @@ class MemoryStore:
         self.remember(npc,player,key,text,'host',importance,ttl,topic)
         return key
 
+    def update_character_context(self,npc,player,changes):
+        """Host-owned state, separate from relationship numbers and player claims.
+
+        Omitted fields persist. An empty value clears a field. No dialogue text
+        can write these facts automatically or borrow another player's state.
+        """
+        allowed={'concern','intention','relationship','recent_event'}
+        if not isinstance(changes,dict) or set(changes)-allowed:
+            raise ValueError('Unknown character context field.')
+        if any(not isinstance(v,str) or len(v)>240 for v in changes.values()):
+            raise ValueError('Character context values must be text of at most 240 characters.')
+        with self._lock,self.db:
+            for key,value in changes.items():
+                if value.strip():
+                    self.db.execute('INSERT OR REPLACE INTO character_context VALUES(?,?,?,?,?)',
+                                    (npc,player,key,value.strip(),time.time()))
+                else:self.db.execute('DELETE FROM character_context WHERE npc=? AND player=? AND field=?',(npc,player,key))
+
+    def character_context(self,npc,player):
+        with self._lock:
+            rows=self.db.execute('SELECT field,value,updated FROM character_context WHERE npc=? AND player=? ORDER BY field',(npc,player)).fetchall()
+        return tuple(f"{r['field']}: {r['value']} (host; updated {r['updated']:.0f})" for r in rows)
+
     def facts(self,npc,player):
         with self._lock:
             rows=self.db.execute('SELECT * FROM facts WHERE npc=? AND player=? AND (expires IS NULL OR expires>?) ORDER BY importance DESC,updated DESC',
@@ -79,13 +105,23 @@ class MemoryStore:
             return self.db.execute('DELETE FROM facts WHERE expires IS NOT NULL AND expires<=?',(time.time(),)).rowcount
 
     def learn_claims(self, npc, player, text):
-        match = re.fullmatch(r"\s*(?:(?:actually|no|sorry)[, ]+)?(?:my name is|call me)\s+([A-Za-z][A-Za-z'-]{0,29})[.!]?\s*", text, re.I)
-        if match and match[1].lower() not in {'not','maybe','anything','whatever','me'}:
-            self.remember(npc, player, "player_name", match[1], "player_claim",importance=80)
+        letter=r"[^\W\d_]"
+        part=letter+r"(?:[^\W\d_]|['-](?=[^\W\d_])){0,29}"
+        match=re.fullmatch(r"\s*(?:(?:hey|hi|hello)[,! ]+)?(?:(?:actually|no|sorry)[, ]+)?(?:my name is|my name's|(?:please )?call me)\s+("+part+r"(?:\s+"+part+r"){0,2})[.!]?\s*",text,re.I)
+        if match:
+            name=' '.join(match[1].split())
+            if len(name)<=60 and name.split()[0].casefold() not in {'not','maybe','anything','whatever','me','later','back','when','tomorrow','a','an'}:
+                self.remember(npc,player,'player_name',name,'player_claim',importance=80)
 
     def recall(self, npc, player, query="", limit=3):
+        if limit<1:return ()
         rows=self.facts(npc,player)
         ranked = relevant_rows(rows,query)
+        # A correction must survive unrelated high-overlap memories. Keep the
+        # current canonical identity available without expanding the budget.
+        identity=next((r for r in rows if r['key']=='player_name'),None)
+        if identity:
+            ranked=[identity]+[r for r in ranked if r['key']!='player_name']
         return tuple(f"{r['key'].replace('_',' ')}: {r['value']} ({r['source']})" for r in ranked[:limit])
 
     def history(self, npc, player, limit=12):

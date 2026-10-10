@@ -104,7 +104,7 @@ class GPUDialogueEngine:
         payload=dict(messages=messages,stream=True,temperature=temperature,
             seed=getattr(self,'settings',{}).get('seed',-1),
             chat_template_kwargs={'enable_thinking':False},
-            top_p=.9,max_tokens=180,cache_prompt=True,repeat_penalty=1.12,
+            top_p=.9,max_tokens=int(getattr(self,'settings',{}).get('max_output_tokens',384)),cache_prompt=True,repeat_penalty=1.12,
             response_format={'type':'json_object','schema':{
                 'type':'object','properties':{'speech':{'type':'string','minLength':1}},
                 'required':['speech'],'additionalProperties':False}})
@@ -118,7 +118,7 @@ class GPUDialogueEngine:
                     prompt=json.load(rendered)['prompt']
                 with self.open('/tokenize',dict(content=prompt,add_special=True)) as encoded:
                     count=len(json.load(encoded)['tokens'])
-                if count <= self.settings.get('context_tokens',2048)-220:break
+                if count <= self.settings.get('context_tokens',2048)-payload['max_tokens']-40:break
                 if len(messages)<=2:raise ValueError('Current NPC context exceeds the available window.')
                 del messages[1:3]
             payload['messages']=messages

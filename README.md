@@ -1,18 +1,18 @@
-# TinyNPC: fast local NPC dialogue with JSON characters and POV context
+# TinyNPC v1.0: fast local NPC dialogue for games
 
 I wanted NPCs I could actually talk to. Small enough to ship, quick enough to keep a conversation moving, and simple enough to drop into a game.
 
-TinyNPC is a **1.28 GB local dialogue model** with a lightweight integration for character personality, memory, and the things an NPC can see around it. On my **RTX 2060 6 GB**, the new model averaged **0.246 seconds per text reply** across 30 test turns. No cloud API or paid inference service is required.
+TinyNPC is a **1.28 GB local dialogue model** with a lightweight integration for character personality, memory, and the things an NPC can see around it. On my **RTX 2060 6 GB**, v1.0 averaged **0.494 seconds per text reply** in a 100-conversation development run, excluding loading and speech. No cloud API or paid inference service is required.
 
 Define who an NPC is in JSON, send descriptions of what it can see, and add the player's message. The runtime combines those inputs into the model's context. One model can serve many different characters. **[Design your first NPC](docs/characters.md)** using the included character and POV files.
 
-**[Download the model](https://github.com/Ataher-KoW/tinynpc/releases/tag/v0.1.0)** | **[Game integration](docs/integration.md)** | **[Results and limits](docs/benchmarks.md)** | **[Model card](inference/MODEL_CARD.md)**
+**[Download the model](https://github.com/Ataher-KoW/tinynpc/releases/tag/v1.0)** | **[Game integration](docs/integration.md)** | **[v1.0 results and limits](docs/v1.0.md)** | **[Model card](inference/MODEL_CARD.md)**
 
-![Official IFEval instruction-following scores](docs/images/ifeval.png)
+[Watch the 48-second response demo](https://github.com/Ataher-KoW/tinynpc/releases/download/v1.0/tinynpc-response-demo.mp4). Real outputs, edited pacing. The game and audio services were not my focus; I made a simple game to show the model.
 
-This comparison uses the full **IFEval** benchmark and its official scoring code. It measures instruction following, not how human an NPC sounds. [Scores, settings, and raw results](docs/standard-benchmarks.md). The [separate NPC integration checks](docs/quality.md) show character descriptions, supplied POV, memory, and examples of invented details.
+![v1.0 development stress comparison](benchmarks/v1.0/comparison.png)
 
-The original larger model scored higher on all four IFEval metrics. The student trades some instruction-following ability for its smaller size and lower measured dialogue latency.
+I chose this fine-tune after trying it in the game. It received a **0.750 AI preference score** on 100 development conversations, but failed the automatic memory/POV and short-reply speed gates. That tradeoff is documented in [the release statistics](docs/v1.0.md). These are not human-verified quality scores. The video also shows a reply that leaks formatting and stage directions.
 
 ## What you get
 
@@ -73,34 +73,21 @@ Send JSON to `http://127.0.0.1:8765/chat`:
 
 Read `speech` from the response and show it in your dialogue UI. Send requests asynchronously so your game keeps rendering. Use one bridge for all NPCs, rather than loading a separate model for every character. See [the full guide](docs/integration.md) for Python, Unity, Unreal, Godot, memory, and point-of-view setup.
 
-## How fast is it?
+## Speed and dialogue quality
 
-![Model size and measured latency](docs/images/overview.png)
+On my RTX 2060 6 GB, v1.0 averaged **0.494 s per reply** in the 100-conversation development comparison, versus 0.383 s for the previous baseline. An AI judge preferred v1.0 in 51 conversations, tied 48, and preferred the baseline once. Replies averaged 15.25 words versus 8.50. Longer replies are not automatically better.
 
-All four rows below were measured on the same RTX 2060. These are variants from this project, not a comparison against every NPC model out there. Smaller and lower latency are better.
+In a separate 320-turn development stress test, all v1.0 replies completed under one second with zero generation failures. Complete-reply p95 was **0.670 s**. It passed **19/24 narrow corrected-name/current-view checks**, versus 24/24 for the baseline. These literal checks do not measure overall conversation quality.
 
-| Model | File size, decimal GB | Mean text turn | Median | p95 | Basic flags / 30 |
-|---|---:|---:|---:|---:|---:|
-| **TinyNPC student** | **1.282** | **0.246 s** | **0.255 s** | **0.361 s** | **0** |
-| Calibrated larger model, Q4_K_S | 2.383 | 0.321 s | 0.308 s | 0.460 s | 0 |
-| Original larger model, Q4_K_M | 2.497 | 0.352 s | 0.340 s | 0.494 s | 0 |
-| Calibrated larger model, IQ3_M | 1.963 | 0.414 s | 0.408 s | 0.568 s | 1 |
+See [the exact statistics and limitations](docs/v1.0.md) and [machine-readable results](benchmarks/v1.0/statistics.json). No claim of improvement on an independent held-out benchmark is made for these weights.
 
-The student has **49% less file size and 30% lower mean latency** than the original model in this test. Timing includes the text generation and memory/context work. It excludes startup, rendering, and speech. Replies vary in length. This is one run of 30 turns per model, not a hardware-wide guarantee.
-
-![Distribution of measured text turn times and response lengths](docs/images/turns.png)
-
-## And the dialogue quality?
-
-There are two separate comparisons: **normal conversations with a character definition and POV supplied**, and **robustness tests with scene information deliberately missing**. A missing-context failure is not a test of whether the model can read a supplied POV description.
-
-See [the quality comparison, exact replies, and scoring limits](docs/quality.md). These are small local tests, not a human study or a claim of perfect dialogue. The speed chart above is the earlier timing run; the newer character tests use richer prompts and have their own recorded timings.
+Earlier [IFEval results](docs/standard-benchmarks.md), [NPC quality examples](docs/quality.md), and [speed graphs](docs/benchmarks.md) are historical results for earlier model versions, not v1.0 measurements.
 
 ## What still needs work
 
 I like where this is now, but I do not want to sell you a perfect-human claim. Odd questions can still get awkward answers. Mood and personality controls are guidance, not exact guarantees. A longer test still used an old name after the player corrected it when structured memory was absent. The regular memory-assisted name test passed.
 
-The integration enables an 8K context window. That means capacity, not proven perfect recall over 8K tokens. The comparison table used 2K context for all models. Additional student probes ran at 8K capacity without filling the whole window.
+The integration enables an 8K context window. That means capacity, not proven perfect recall over 8K tokens. The older historical comparison used 2K context. The new fine-tune was trained with a 4K limit; runtime capacity is 8K, without a demonstrated filled-window recall guarantee.
 
 The RTX 2060 is the only GPU measured here. I have not measured other GPUs, CPU-only performance, many simultaneous players, or phone hardware. Test your target hardware with `python -m benchmarks.run`.
 
@@ -119,3 +106,5 @@ python -m benchmarks.plot
 ```
 
 The integration code is MIT licensed. The model derives from an Apache-2.0 base; its license and modification notice are included under `inference/`. See [third-party notices](NOTICE.md).
+
+For the next local character-training experiment, see [the complete overnight guide](docs/character-overnight.md). It covers connected conversations, flexible replies, preference training, persistent character context, and blind human review.

@@ -48,20 +48,38 @@ class PerceptionFrame:
             focused=next((e for e in visible if e.entity_id==self.focused_entity_id),None)
             if focused:return focused,'explicit'
         words=set(re.findall(r'[a-z]+',query.lower()))
+        if re.search(r'\bmy (?:left|right)\b',query,re.I):return None,'unknown'
+        # Resolve spatial constraints before selecting a kind or an old topic.
+        # A visible object elsewhere is not evidence for the requested side.
+        spatial=re.search(r'\b(?:on|to|at|toward|towards)\s+(?:(?:your|my|the)\s+)?(left|right|north|south|east|west)\b',query,re.I)
+        direction=spatial[1].lower() if spatial else ('behind' if re.search(r'\bbehind (?:you|us|me)\b',query,re.I) else 'ahead' if re.search(r'\b(?:in front of you|straight ahead)\b',query,re.I) else '')
+        if direction:
+            candidates=[e for e in visible if direction in e.direction.lower().split() or (direction=='ahead' and e.direction.lower()=='front')]
+            kinds={'building','structure','house','person','prop','object'} & words
+            kind='building' if kinds & {'building','structure','house'} else 'person' if 'person' in kinds else None
+            if kind:candidates=[e for e in candidates if e.kind==kind]
+            if not candidates:return None,'missing'
+            nouns=words-{'a','an','the','is','it','you','your','my','on','to','at','of','structure','building','object',direction}
+            named=[e for e in candidates if nouns & set(re.findall(r'[a-z]+',(e.known_name+' '+e.description).lower()))]
+            if len(named)==1:return named[0],'named'
+            if len(candidates)==1:return candidates[0],'spatial'
+            return None,'ambiguous'
         stop={'what','where','which','that','this','there','your','like','with','have','does','about','person','building'}
         nouns=words-stop
         matches=[e for e in visible if nouns & set(re.findall(r'[a-z]+',(e.known_name+' '+e.description).lower()))-{'a','an','the','of','to','in','on','is','it','you'}]
         if len(matches)==1:return matches[0],'named'
         if len(matches)>1:return None,'ambiguous'
         for kind in ('building','person','prop'):
-            if kind in words:
+            if kind in words or (kind=='building' and 'structure' in words):
                 matches=[e for e in visible if e.kind==kind]
                 if len(matches)==1:return matches[0],'unique'
                 if len(matches)>1:return None,'ambiguous'
+                return None,'missing'
         if words & {'it','that','this'}:
             previous=next((e for e in visible if e.entity_id==previous_id),None)
             if previous:return previous,'previous'
             return None,'unknown'
+        if re.search(r'\b(?:can you see|do you see|can you identify|can you make out)\b',query,re.I):return None,'missing'
         return None,'none'
 
     def observations(self, query="", limit=4):

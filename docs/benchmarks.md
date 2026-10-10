@@ -1,3 +1,5 @@
+> Historical results: this page evaluates earlier weights, not the v1.0 preference fine-tune. See [v1.0 statistics](v1.0.md).
+
 # What the comparison actually measured
 
 I wanted to see whether a smaller model could keep the conversation moving without carrying the larger model's download size. These are the results from my own PC, with the raw turns included so you can judge more than the averages.
