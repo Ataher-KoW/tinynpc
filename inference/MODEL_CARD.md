@@ -27,4 +27,4 @@ The development AI preference score was 0.750 over 100 conversations. This is no
 
 ## Limitations
 
-Replies can hallucinate facts, miss corrections, leak markup or stage directions, and drift from character instructions. The unedited demo includes such a formatting leak. JSON-constrained output does not guarantee clean natural speech inside the string. Keep authoritative game actions and state outside the model. Only RTX 2060 6 GB performance has been measured locally. Speech, startup, and other hardware are excluded from timing claims.
+Replies can hallucinate facts, miss corrections, leak markup or stage directions, and drift from character instructions. A previous capture exposed such a formatting leak. The new paired demo preserves its own replies unchanged. JSON-constrained output does not guarantee clean natural speech inside the string. Keep authoritative game actions and state outside the model. Only RTX 2060 6 GB performance has been measured locally. Speech, startup, and other hardware are excluded from timing claims.
