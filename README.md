@@ -8,11 +8,11 @@ Define who an NPC is in JSON, send descriptions of what it can see, and add the 
 
 **[Download the model](https://github.com/Ataher-KoW/tinynpc/releases/tag/v1.0)** | **[Game integration](docs/integration.md)** | **[v1.0 results and limits](docs/v1.0.md)** | **[Model card](inference/MODEL_CARD.md)**
 
-[Watch the 48-second response demo](https://github.com/Ataher-KoW/tinynpc/releases/download/v1.0/tinynpc-response-demo.mp4). Real outputs, edited pacing. The game and audio services were not my focus; I made a simple game to show the model.
+[Watch baseline vs v1.0, side by side](https://github.com/Ataher-KoW/tinynpc/releases/download/v1.0/tinynpc-baseline-v1.0-demo.mp4). Real outputs, edited pacing. The game and audio services were not my focus; I made a simple game to show the model.
 
-![v1.0 development stress comparison](benchmarks/v1.0/comparison.png)
+![Baseline vs v1.0 conversation comparison](benchmarks/v1.0/comparison.png)
 
-I chose this fine-tune after trying it in the game. It received a **0.750 AI preference score** on 100 development conversations, but failed the automatic memory/POV and short-reply speed gates. That tradeoff is documented in [the release statistics](docs/v1.0.md). These are not human-verified quality scores. The video also shows a reply that leaks formatting and stage directions.
+I chose v1.0 after trying it in the game. In 100 development conversations, the AI judge preferred it **51 times**, tied **48**, and preferred the previous baseline once: a **0.750 preference score**. It completed all 100 conversations and gave more developed replies while keeping the same **1.28 GB** size. Mean reply time was **0.494 seconds** on my RTX 2060. [Full comparison and measurement limits](docs/v1.0.md). AI preference is not human-verified quality, and longer replies are not automatically better.
 
 ## What you get
 
